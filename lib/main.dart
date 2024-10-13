@@ -1,46 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:quizapp/FrontPage.dart';
 
 void main() {
-  runApp(const FrontPage());
-}
-
-class FrontPage extends StatelessWidget {
-  const FrontPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  runApp(
+    MaterialApp(
       home: Scaffold(
-        body: SafeArea(
-          child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(40),
-                  child: const Image(image: AssetImage("assets/quiz-logo.png")),
-                ),
-                const Text(
-                  "Learn Flutter The Fun Way ",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
-                ),
-                Container(
-                  padding: const EdgeInsets.all(20),
-                  color: const Color.fromARGB(255, 59, 0, 98),
-                  child: OutlinedButton(
-                    onPressed: () {},
-                    child: const Text(
-                      "Start Quiz",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
-              ],
+        body: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(colors: [
+              Color.fromARGB(255, 98, 10, 175),
+              Color.fromARGB(255, 79, 1, 110)
+            ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+          ),
+          child: const SafeArea(
+            child: Center(
+              child: FrontPage(),
             ),
           ),
         ),
-        backgroundColor: const Color.fromARGB(255, 59, 0, 98),
       ),
-    );
-  }
+    ),
+  );
 }
