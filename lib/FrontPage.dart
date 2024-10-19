@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class FrontPage extends StatelessWidget {
-  const FrontPage({super.key});
+  const FrontPage(this.startQuiz, {super.key});
+  final void Function() startQuiz;
+  void Quiz() {
+    print("Hello");
+    startQuiz();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +15,10 @@ class FrontPage extends StatelessWidget {
       children: [
         Container(
           padding: const EdgeInsets.all(40),
-          child: const Image(image: AssetImage("assets/quiz-logo.png")),
+          child: const Image(
+            image: AssetImage("assets/quiz-logo.png"),
+            color: Color.fromARGB(170, 255, 255, 255),
+          ),
         ),
         const Text(
           "Learn Flutter The Fun Way ",
@@ -18,9 +26,10 @@ class FrontPage extends StatelessWidget {
         ),
         Container(
           padding: const EdgeInsets.all(20),
-          color: const Color.fromARGB(255, 59, 0, 98),
           child: OutlinedButton(
-            onPressed: () {},
+            onPressed: () {
+              Quiz();
+            },
             child: const Text(
               "Start Quiz",
               style: TextStyle(color: Colors.white),
