@@ -4,7 +4,6 @@ class FrontPage extends StatelessWidget {
   const FrontPage(this.startQuiz, {super.key});
   final void Function() startQuiz;
   void Quiz() {
-    print("Hello");
     startQuiz();
   }
 

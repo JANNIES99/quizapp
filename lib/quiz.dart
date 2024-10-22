@@ -29,10 +29,14 @@ class _QuizState extends State<Quiz> {
       home: Scaffold(
         body: Container(
           decoration: const BoxDecoration(
-            gradient: LinearGradient(colors: [
-              Color.fromARGB(255, 98, 10, 175),
-              Color.fromARGB(255, 79, 1, 110)
-            ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+            gradient: LinearGradient(
+              colors: [
+                Color.fromARGB(255, 98, 10, 175),
+                Color.fromARGB(255, 79, 1, 110)
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
           ),
           child: SafeArea(
             child: Center(

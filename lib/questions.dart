@@ -10,6 +10,7 @@ class Questions extends StatefulWidget {
 }
 
 class _QuestionsState extends State<Questions> {
+  var state = listQuestions[0];
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -17,15 +18,20 @@ class _QuestionsState extends State<Questions> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            listQuestions[0].Question,
+            state.Question,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+            ),
           ),
           const SizedBox(
             height: 40,
           ),
-          SEB(listQuestions[0].Option[0]),
-          SEB(listQuestions[0].Option[1]),
-          SEB(listQuestions[0].Option[2]),
-          SEB(listQuestions[0].Option[3]),
+          ...state.Option.map(
+            (item) {
+              return SEB(item, () {});
+            },
+          ),
         ],
       ),
     );
