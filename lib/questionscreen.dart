@@ -4,7 +4,8 @@ import 'package:quizapp/SEB.dart';
 import 'package:quizapp/model/listQuestion.dart';
 
 class Questions extends StatefulWidget {
-  const Questions({super.key});
+  const Questions(this.onSelect, {super.key});
+  final void Function(String) onSelect;
 
   @override
   State<Questions> createState() => _QuestionsState();
@@ -13,10 +14,16 @@ class Questions extends StatefulWidget {
 class _QuestionsState extends State<Questions> {
   int currIndex = 0;
 
-  void nextState() {
-    setState(() {
-      currIndex++;
-    });
+  void nextState(String answer) {
+    widget.onSelect(answer);
+    setState(
+      () {
+        currIndex++;
+        if (currIndex == listQuestions.length) {
+          currIndex = 0;
+        }
+      },
+    );
   }
 
   @override
@@ -33,7 +40,8 @@ class _QuestionsState extends State<Questions> {
               state.Question,
               style: GoogleFonts.abel(
                 color: Colors.white,
-                fontSize: 20,
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
               ),
               textAlign: TextAlign.center,
             ),
@@ -44,7 +52,12 @@ class _QuestionsState extends State<Questions> {
               (item) {
                 return Container(
                   padding: const EdgeInsets.all(5),
-                  child: SEB(item, nextState),
+                  child: SEB(
+                    item,
+                    () {
+                      nextState(item);
+                    },
+                  ),
                 );
               },
             ),
