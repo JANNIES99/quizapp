@@ -3,6 +3,7 @@ import 'package:quizapp/FrontPage.dart';
 import 'package:quizapp/model/listQuestion.dart';
 import 'package:quizapp/questionscreen.dart';
 import 'package:quizapp/resultscreen.dart';
+import 'package:quizapp/Summary.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -15,6 +16,7 @@ class _QuizState extends State<Quiz> {
   List<String> selectedAnswer = [];
   Widget? activeScreen;
   void switchScreen() {
+    listQuestions.shuffle();
     setState(
       () {
         activeScreen = Questions(onSelect);
@@ -24,6 +26,7 @@ class _QuizState extends State<Quiz> {
 
   void returnStart() {
     selectedAnswer = [];
+    resultTab = [];
     setState(() {
       activeScreen = FrontPage(switchScreen);
     });

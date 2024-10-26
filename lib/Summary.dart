@@ -5,31 +5,59 @@ class Summary extends StatelessWidget {
   final List<Map<String, Object>> summaryData;
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-          children: summaryData.map(
-        (data) {
-          return Column(
-            children: [
-              Row(
-                children: [
-                  Text(
-                    ((data["Index"] as int) + 1).toString(),
+    return SizedBox(
+      height: 400,
+      child: SingleChildScrollView(
+        child: Column(
+            children: summaryData.map(
+          (data) {
+            return Row(
+              children: [
+                Container(
+                  height: 30,
+                  width: 30,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: (data["Answer"] as String) ==
+                            (data["Choosen"] as String)
+                        ? Colors.green
+                        : Colors.red,
                   ),
-                  const SizedBox(
-                    width: 5,
+                  child: Center(
+                    child: Text(
+                      ((data["Index"] as int) + 1).toString(),
+                    ),
                   ),
-                  Text(
-                    data["Question"].toString(),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: Column(
+                    children: [
+                      Text(
+                        data["Question"].toString(),
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 15),
+                      ),
+                      Text(
+                        data["Answer"].toString(),
+                        style: const TextStyle(color: Colors.green),
+                      ),
+                      Text(
+                        data["Choosen"].toString(),
+                        style: const TextStyle(color: Colors.red),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-              Text(data["Answer"].toString()),
-              Text(data["Choosen"].toString()),
-            ],
-          );
-        },
-      ).toList()),
+                )
+              ],
+            );
+          },
+        ).toList()),
+      ),
     );
   }
 }
