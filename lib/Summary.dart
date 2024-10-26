@@ -9,11 +9,23 @@ class Summary extends StatelessWidget {
       child: Column(
           children: summaryData.map(
         (data) {
-          return Row(
+          return Column(
             children: [
-              Text(
-                ((data["Index"] as int) + 1).toString(),
-              )
+              Row(
+                children: [
+                  Text(
+                    ((data["Index"] as int) + 1).toString(),
+                  ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    data["Question"].toString(),
+                  ),
+                ],
+              ),
+              Text(data["Answer"].toString()),
+              Text(data["Choosen"].toString()),
             ],
           );
         },

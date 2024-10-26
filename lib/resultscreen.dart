@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizapp/Summary.dart';
 import 'package:quizapp/model/listQuestion.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -39,13 +40,14 @@ class Resultscreen extends StatelessWidget {
                 fontSize: 20,
               ),
             ),
+            Summary(resultTab),
             OutlinedButton(
               onPressed: returnStart,
               child: const Text(
                 "Return",
                 style: TextStyle(color: Colors.white),
               ),
-            )
+            ),
           ],
         ),
       ),
