@@ -13,6 +13,7 @@ class Resultscreen extends StatelessWidget {
     int totalcount = listQuestions.length;
     for (int i = 0; i < totalcount; i++) {
       resultTab.add({
+        "Index": i,
         "Question": listQuestions[i].Question,
         "Answer": listQuestions[i].Option[0],
         "Choosen": chosenAnswers[i],
